@@ -1,0 +1,115 @@
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font: 14px/1.5 arial;
+}
+html,body,main {
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+.clearfix::after {
+  content:'';
+  display: block;
+  clear: both;
+}
+.flip_window {
+  display: none;/* 把整个窗口隐藏起来 */
+}
+
+/* page css */
+header {
+  width: 100%;
+  position: absolute;
+  margin-top: 15px;
+}
+.login_circle {
+  margin-right: 15px;
+  float: right;
+  font-size: 20px;
+}
+ /* width: 100%; */
+/* main {
+  position: relative;
+} */
+input[type=submit] {
+  border: none;
+  padding: 7px 10px;
+  box-shadow: 0 1px 1px 1px rgba(0,0,0,0.3);
+}
+main div.switchbar {
+  display: flex;
+  justify-content: center;
+}
+main .switchbar a {
+  margin: 0 10px;
+  color: #666;
+  font-size: 18px;
+}
+.login .switchbar a:first-child,
+.register .switchbar a:nth-child(2){
+  border-bottom: 2px solid #444;
+}
+main .login,
+main .register {
+  padding: 16px;
+}
+main .login .content,
+main .register .content {
+  padding: 20px 40px;
+}
+main .login input[type=password],
+main .login input[type=text],
+main .register input[type=password],
+main .register input[type=text]{
+  width: 100%;
+  padding: 10px 10px 10px 30px;
+}
+main .content .fa {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+}
+main .content .input_ct {
+  position: relative;
+}
+main .content div {
+  margin-top: 10px;
+}
+main .content .error_hint {
+  font-size: 12px;
+  color: #ff9800;
+}
+main .close {
+  font-size: 18px;
+  color: #444;
+  float: right;
+  position: relative;
+  top: -9px;
+  right: -7px;
+}
+.login,.register {
+  width:400px;
+  position: absolute;
+  left:50%;
+  top: 50%;
+  box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);
+}
+.flip_window.loginbar div.login,
+.flip_window.registerbar div.register {
+  transform:translate(-50%,-50%) rotateY(0deg);
+  backface-visibility:hidden;
+  transition: all 1s;
+}
+.flip_window.loginbar div.register,
+.flip_window.registerbar div.login {
+  transform:translate(-50%,-50%) rotateY(180deg);
+  backface-visibility:hidden;
+  transition: all 1s;
+}
+

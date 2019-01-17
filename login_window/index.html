@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登入&注册demo</title>
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">  
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="clearfix">
+    <a href="#" class="login_circle"><i class="fa fa-user-circle"></i></a>
+  </header>
+  <main>
+    <div class="flip_window loginbar">
+        <div class="login clearfix" ">
+            <a href="#" class="close"><i class="fa fa-times"></i></a>
+            <div class="switchbar">
+              <a href="#" class="tab_login">登入</a>
+              <a href="#" class="tab_register">注册</a>
+            </div>
+            <div class="content">
+              <div class="error_hint"></div>
+              <form action="" method="POST" style="position: relative">
+                <div class="input_ct">
+                  <i class="fa fa-user-circle"></i>              
+                  <input type="text" placeholder="用户名" name="username">
+                </div>
+                <div class="input_ct">
+                  <i class="fa fa-lock"></i>
+                  <input type="password" placeholder="密码" name="password">
+                </div>
+                <div>
+                  <input type="submit" value="登录" name="submit">
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="register clearfix">
+            <a href="#" class="close"><i class="fa fa-times"></i></a>
+            <div class="switchbar">
+              <a href="#" class="tab_login">登入</a>
+              <a href="#" class="tab_register">注册</a>
+            </div>
+            <div class="content">
+              <div class="error_hint"></div>
+              <form action="" method="POST">
+                <div class="input_ct">
+                  <i class="fa fa-user-circle"></i>              
+                  <input type="text" placeholder="用户名" name="username">
+                </div>
+                <div class="input_ct">
+                  <i class="fa fa-lock"></i>
+                  <input type="password" placeholder="密码" name="password">
+                </div>
+                <div class="input_ct">
+                  <i class="fa fa-lock"></i>
+                  <input type="password" placeholder="确认密码" name="password_confirm">
+                  </div>
+                <div>
+                  <input type="submit" value="注册">
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+  </main>
+
+  <script>
+    function $(selector){
+      return document.querySelector(selector)
+    }
+    function $$(selector){
+      return document.querySelectorAll(selector)
+    }
+
+    $('header .login_circle').onclick = function(e) {
+      e.stopPropagation()
+      $('.flip_window').style.display = 'block'
+    }
+    $('.close').onclick = function(e) {
+      e.stopPropagation()
+      $('.flip_window').style.display = 'none'
+    }
+
+    $('.flip_window').addEventListener('click', function(e){
+      e.stopPropagation()
+      if (e.target.classList.contains('tab_register')) {
+        $('.flip_window').classList.remove('loginbar')
+        $('.flip_window').classList.add('registerbar')
+      }
+      if (e.target.classList.contains('tab_login')) {
+        $('.flip_window').classList.remove('registerbar')
+        $('.flip_window').classList.add('loginbar')
+      }
+      console.log(e.target)
+      console.log(this)
+    })
+    // 事件代理
+    document.addEventListener('click',function(){
+      $('.flip_window').style.display = 'none'
+    })
+
+    $('.login form').addEventListener('submit',function(e){
+      e.preventDefault()
+      if(!/^\w{3,8}$/.test($('.login input[name=username]').value)) {
+        $('.login .error_hint').innerText = '用户名需输入3-8个字符，包括字母数字和下划线'
+        return false
+      }
+      if(!/^\w{6,10}$/.test($('.login input[name=password]').value)) {
+        $('.login .error_hint').innerText = '密码需输入6-10个字符，包括字母数字和下划线'
+        return false
+      }
+      this.submit()
+    })
+
+    $('.register form').addEventListener('submit',function(e){
+      e.preventDefault()
+      if (!/^\w{3,8}$/.test($('.register input[name=username]').value)) {
+        $('.register .error_hint').innerText = '用户名需输入3-8个字符，包括字母数字和下划线'
+        return false
+      }
+      if (!/^\w{6,10}$/.test($('.register input[name=password]').value)) {
+        $('.register .error_hint').innerText = '密码需输入6-10个字符，包括字母数字和下划线'
+        return false
+      }
+      if ($('.register input[name=password_confirm]').value !== $('.register input[name=password]').value) {
+        $('.register .error_hint').innerText = '两次输入的密码不一致，请再次输入'
+        return false
+      }
+      this.submit()
+    })
+  </script>
+  
+  
+</body>
+</html>
