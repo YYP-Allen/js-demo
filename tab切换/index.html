@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- <script src="https://code.jquery.com/jquery-3.0.0.js"></script> -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>tab 切换(原生js)</title>
+  <title>tab 切换(jquery)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -37,22 +38,18 @@
     </div>
   </div>
   <script>
-    document.querySelectorAll('.switch-tab .tab').forEach(function(node){
-  node.addEventListener('click', function(){
-    var index
-    this.parentElement.querySelectorAll('.tab').forEach(function(tab, idx){
-      tab.classList.remove('active')
-      if(node === tab){
-        index = idx
-      }
-    })
-    this.classList.add('active')
-    this.parentElement.nextElementSibling.querySelectorAll('.panel').forEach(function(panel){
-      panel.classList.remove('active')
-    })
-    this.parentElement.nextElementSibling.querySelectorAll('.panel')[index].classList.add('active')
-  })
-})
+    $('.switch-tab .tab').on('click', function() {
+      $(this).addClass('active')
+             .siblings()
+             .removeClass('active');
+             
+      $(this).parents('.switch-tab')
+             .find('.panel')
+             .eq($(this).index())
+             .addClass('active')
+             .siblings()
+             .removeClass('active');
+    });
   </script>
 </body>
 </html>
