@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+.switch-tab {
+  margin-top: 40px;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.header .tab {
+  float: left;
+  cursor: pointer;
+  padding: 5px 20px;
+  background: #ddd;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+}
+.switch-tab .header .tab.active {
+  background-color: #fff;
+}
+.header .tab:last-child{
+  border-right:1px solid #eee;
+}
+.switch-tab .content {
+  width: 280px;
+  height: 210px;
+  background: #fff;
+  border: 1px solid #eee;
+}
+.switch-tab .content .panel {
+  display: none;
+  padding: 20px;
+}
+.switch-tab .content .panel.active {
+  display: block;
+  color: red;
+}
