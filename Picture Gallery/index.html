@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>事件demo-JS现代教程-demo3图像库
+</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    ul li {
+      list-style: none;
+    }
+    img {
+      padding: 3px;
+      border: 1px solid #ccc;
+    }
+    #gallery .smallImg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: 458px;
+    }
+    .smallImg img {
+      width: 100px;
+      height: 100px;
+      margin-right: 4.5px;
+    }
+    .smallImg  span:last-child > img {
+      margin-right: 0px;
+    }
+    #gallery > .normalImg {
+      position: relative;
+    } 
+    #gallery > .normalImg li {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,10%);
+    } 
+  </style>
+</head>
+<body>
+  <div id="gallery">
+    <div class="normalImg" >
+      <ul>
+        <li id="1"><img src="https://en.js.cx/gallery/img2-lg.jpg" alt=""></li>
+        <li id="2"><img src="https://en.js.cx/gallery/img3-lg.jpg" alt=""></li>
+        <li id="3"><img src="https://en.js.cx/gallery/img4-lg.jpg" alt=""></li>
+        <li id="4"><img src="https://en.js.cx/gallery/img5-lg.jpg" alt=""></li>
+        <li id="5"><img src="https://en.js.cx/gallery/img6-lg.jpg" alt=""></li>
+      </ul>
+    </div>
+    <div class="smallImg">
+        <span data-id="1"><img src="https://en.js.cx/gallery/img2-lg.jpg" alt=""></span>
+        <span data-id="2"><img src="https://en.js.cx/gallery/img3-lg.jpg" alt=""></span>
+        <span data-id="3"><img src="https://en.js.cx/gallery/img4-lg.jpg" alt=""></span>
+        <span data-id="4"><img src="https://en.js.cx/gallery/img5-lg.jpg" alt=""></span>
+        <span data-id="5"><img src="https://en.js.cx/gallery/img6-lg.jpg" alt=""></span>
+    </div>
+  </div>
+  <script scr="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+}  
+img {
+  border-radius: 65px;
+  width: 130px;
+  height: 130px;  
+  vertical-align: middle;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+} 
+#box {
+	margin-top: 100px;
+  position: relative;
+  width: 480px;
+  height: 150px;
+  border: 2px solid #666;
+  border-radius: 15px;
+  background-color: #bf949f2b;
+  display: flex;
+/*   flex仅仅对左右两个按钮做布局，可以不使用绝对定位 */
+} 
+ul {
+  list-style: none;
+  width: 9999px;
+}
+ul li {
+    float: left;
+   }
+#box > .gallery {
+  margin: 10px 45px;
+  overflow: hidden;
+} 
+.arrow {
+  position: absolute;
+  font-size: 24px;
+  line-height: 24px;
+  border-radius: 14px; 
+  align-self: center;
+  cursor: pointer;
+}
+.arrow:last-of-type {
+  left: calc(100% - 26px);
+}
+
+
+
+
