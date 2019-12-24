@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>tab切换组件-JQuery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      margin: 0 auto;
+    }
+    .container > .tabs {
+      width: 280px;
+      list-style-type: none;
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 30px;
+    }
+    .container > .tabs > li {
+      cursor: pointer;
+      flex-grow: 1;
+      border-top: 1px solid #eee;
+      border-left: 1px solid #eee;
+      background-color: #fff;
+      text-align: center;
+      padding: 5px 0;
+    }
+    .container > .tabs > li:last-child {
+      border-right: 1px solid #eee;
+    }
+    .container > .content {
+      width: 280px;
+      height: 210px;
+      background-color: #fff;
+      border: 1px solid #eee;
+    }
+    .tabs > li.active {
+      background-color: #eee;
+      opacity: .75;
+    }
+    .content > .panel.active {
+      display: block;
+      color: red;
+    }
+    .content > .panel {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="tabs">
+      <li class="active">Tab1</li>
+      <li>Tab2</li>
+      <li>Tab3</li>
+    </ul>
+    <div class="content">
+      <div class="panel active">Content-1</div>
+      <div class="panel">Content-2</div>
+      <div class="panel">Content-3</div>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="tabs">
+      <li class="active">Tab1</li>
+      <li>Tab2</li>
+      <li>Tab3</li>
+    </ul>
+    <div class="content">
+      <div class="panel active">Content-1</div>
+      <div class="panel">Content-2</div>
+      <div class="panel">Content-3</div>
+    </div>
+  </div>
+  <script>
+
+function Tabs($CT) {
+  this.$CT = $CT
+  this.$tabs = this.$CT.find('.tabs > li')
+  this.bind()
+}
+Tabs.prototype.bind = function () {
+  // tabs的切换
+  this.$tabs.on('click', function() {
+    $(this).addClass('active')
+           .siblings()
+           .removeClass('active')
+
+    // tabs对应的Content区域的切换
+    $(this).parents('.container')
+           .find('.content')
+           .children().eq($(this).index())
+           .addClass('active')
+           .siblings()
+           .removeClass('active')
+  })
+}
+var tab1 = new Tabs($('.container').eq(0))
+var tab2 = new Tabs($('.container').eq(1))
+  </script>
+</body>
+</html>

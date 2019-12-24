@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>无限轮播demo-byJQuery</title>
+  <style>
+    #gallery {
+      display: flex;
+      align-items: flex-start;
+    }
+    #container {
+      width: 300px;
+      overflow: hidden;
+    }
+    #gallery > img {
+      vertical-align: top;
+    } 
+    .buttons {
+      position: absolute;
+      left: 150px;
+      transform: translate(-50%)
+    }
+    .buttons > span {
+      
+      font-size: 20px;
+    }
+    .showColor {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="gallery" id="gallery">
+      <img src="https://cdn.nlark.com/yuque/0/2019/jpeg/435416/1569837351887-assets/web-upload/ad001050-48aa-4041-848a-4eb4c2fdd05a.jpeg" alt="Curry2" width="300px" height="200px">
+      <img src="https://cdn.nlark.com/yuque/0/2019/jpeg/435416/1569837351697-assets/web-upload/e3b30958-36cd-458a-9a56-f8d9a8f80533.jpeg" width="300px" height="200px">
+      <img src="https://cdn.nlark.com/yuque/0/2019/jpeg/435416/1569837351341-assets/web-upload/174bca77-b1d2-4bfa-9f6e-5b5e1fcc8e51.jpeg" alt="Curry3" width="300px" height="200px">
+      <img src="https://cdn.nlark.com/yuque/0/2019/jpeg/435416/1569837351814-assets/web-upload/b41d6df4-4b31-4635-baa1-f9331e1a718a.jpeg" alt="Curry4" width="300px" height="200px">
+    </div>
+  </div>
+  <span class="buttons">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+  </span>
+  <script class="./index.js"></script>
+</body>
+</html>

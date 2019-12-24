@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JQuery 动画</title>
+  <style>
+    button {
+      padding: 5px 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    div.JQuery-box {
+      margin: 0 auto;
+      width: 100px;
+      height: 80px; 
+      text-align: center;
+      color: blue;
+      border: 1px solid green;
+      background-color: pink;
+    }
+    
+  </style>
+</head>
+<body>
+  <button class="show">Show</button>
+  <button class="hide">Hide</button>
+  <button class="slideUp">slideUp</button>
+  <button class="slideDown ">slideDown</button>
+  <button class="slideToggle">slideToggle</button>
+  <button class="fadeIn">fadeIn</button>
+  <button class="fadeOut ">fadeOut</button>
+  <button class="animate">animate</button>
+  <div class="wrapper">
+  <div class="JQuery-box">JQuery动画</div>
+  </div>
+
+  <script>
+    $('.show').on('click', function () {
+      $('.JQuery-box').show('normal')
+      console.log('show')
+    })
+    $('.hide').on('click', function () {
+      $('.JQuery-box').hide('normal')
+      console.log('hide')
+    })
+
+    $('.slideUp').on('click', function () {
+      $('.JQuery-box').slideUp('slow')
+      console.log('slideUp')
+    })
+    $('.slideDown').on('click', function () {
+      $('.JQuery-box').slideDown('slow')
+      console.log('slideDown')
+    })
+    
+    $('.slideToggle').on('click', function () {
+      $('.JQuery-box').slideToggle('slow')
+      console.log('slideToggle')
+    })
+    $('.fadeIn').on('click', function () {
+      $('.JQuery-box').fadeIn('slow')
+      console.log('fadeIn')
+    })
+
+    $('.fadeOut').on('click', function () {
+      $('.JQuery-box').fadeOut('slow')
+      console.log('fadeOut')
+    })
+    $('.animate').on('click', function () {
+      $('.JQuery-box').animate({
+        backgroundColor: "#333",
+        borderWidth: "8px",
+        width: "80%",
+        opacity: .5
+      }, 3000,'linear')
+    })
+
+		// JQuery动画队列
+		$('.taskQueue').on('click', function () {
+      $('.JQuery-box').hide('slow')
+                      .show('slow')
+                      .slideUp(1200)
+                      .slideDown(1200)
+                      .fadeOut(1500)
+                      .fadeIn(1500, function () {
+                          console.log('动画队列执行完毕')
+                       })
+      console.log('Show')
+    })
+  </script>
+</body>
+</html>

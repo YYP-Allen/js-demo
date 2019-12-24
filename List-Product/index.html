@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>List-Product by JQuery</title>
+  <style>
+    /* reset css */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    ul > li {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+    }
+    /* common css */
+    div.layout {
+      margin: 20px auto 0 auto;
+      width: 766px;
+    }
+    ul > li {
+      margin-top: 15px;
+      border: 1px solid #eee;
+      padding: 10px 20px;
+      background-color: #fff;
+      position: relative;
+      margin-left: 13.333px;
+    }
+    figcaption {
+      margin-top: 10px;
+      color: #551A8B;
+    }
+    h2 {
+      color: #ec7259;
+      margin-left: 13.333px;
+    }
+    .contanier ul {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      flex-wrap: wrap;
+    }
+    .contanier > .Btn {
+      display: inline-block;
+      margin: 20px 0px 0px 13.333px;
+      padding: 5px 10px;
+      color: #c81623;
+      border: 1px solid #c81623;
+
+    }
+    .cover > .delete {
+      margin-top: 0;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: red;
+      font-size: 20px;
+    }
+   .cover a {
+      display: none;
+    } 
+    .cover .delete {
+      display: block;
+    } 
+    .product .hover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, .3);
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="contanier layout">
+    <h2>商品列表</h2>
+    <div class="wrapper">
+      <ul>
+        <li class="product">
+          <div class="cover"><a href="javascript:;" class="">X</a></div>
+          <a href="">
+            <figure>
+              <img src="https://picsum.photos/200/200/?image=1" alt="">
+              <figcaption>MacBook</figcaption>
+              <figcaption>￥8500.00</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="product">
+          <div class="cover"><a href="javascript:;" class="">X</a></div>
+          <a href="">
+            <figure>
+              <img src="https://picsum.photos/200/200/?image=2" alt="">
+              <figcaption>MacBook Air</figcaption>
+              <figcaption>￥7800.00</figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="product">
+          <div class="cover"><a href="javascript:;" class="">X</a></div>
+          <a href="">
+            <figure>
+              <img src="https://picsum.photos/200/200/?image=3" alt="">
+              <figcaption>MacBook Pro</figcaption>
+              <figcaption>￥10000.00</figcaption>
+            </figure>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <a href="javascript:;" class="Btn add">产品上新</a>
+    <a href="javascript:;" class="Btn edit">编辑</a>
+  </div>
+  <script>
+    function newProduct(product) {
+      var html = '<li class="product">'
+               +    '<div class="cover"><a href="javascript:;" class="">X</a></div>'
+               +    '<a href="javascript:;">'
+               +      '<figure>'
+               +        '<img src="'+product.img+'"  alt="">'
+               +        '<figcaption class="name">Macbook xxx</figcaption>'
+               +        '<figcaption class="price">'+product.price+'</figcaption>'
+               +      '</figure>'
+               +    '</a>'
+               +  '</li>'
+      return html
+    } 
+    // 新增三个商品的信息
+    function getList() {
+      var list = []
+      for (var i = 0; i <3; i++) {
+        var randomNumber = Math.floor(Math.random()*100)
+        var productInfo  = {
+          img: 'https://picsum.photos/200/200/?image=' + randomNumber,
+          name: 'Macbook xxx',
+          price: '￥' + randomNumber*100
+        }
+        list.push(productInfo)
+      }
+      return list
+    }
+
+    // 添加商品,事件代理
+    $('.contanier').on('click', '.add',function () {
+      var listData = getList() 
+      $.each(listData, function (index, product) {
+          // 遍历给商品赋值
+          var html = newProduct(product)
+          // console.log(html)
+          $('.contanier > .wrapper > ul').append(html)
+          $('.contanier .cover').removeClass('hover')
+          $('.cover a').removeClass('delete')
+        })
+    })
+    // 进入编辑状态
+    $('.edit').on('click',function () {
+        $('.product > div').toggleClass('hover')
+        $('.cover > a').toggleClass('delete')
+      })
+    
+    // 点击删除商品
+    $('ul').on('click', '.delete',function () {
+        $(this).parents('.product').remove()
+      })
+  </script>
+</body>
+</html>
