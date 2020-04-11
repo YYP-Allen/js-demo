@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONP跨域测试</title>
+</head>
+<body>
+  <div class="container">
+    <button class="display">球员数据</button>
+    <ul class="info">
+    </ul> 
+  </div>
+  <script>
+    function $(selector) {
+      return document.querySelector(selector)
+    }
+
+    $('.display').addEventListener('click', function(){
+    var script = document.createElement('script')
+    // localhost 是一个域名，在过去它指向 127.0.0.1 这个IP地址
+    script.src = 'http://127.0.0.1:8080/getData?callback=appendHtml'
+    // 必须把script标签放置到 body 中，才会生效
+    document.head.appendChild(script)
+    // 移除， 让HTML看上去更先进干净
+    document.head.removeChild(script)
+  })
+
+    function appendHtml(PlayerData) {
+      var html = ''
+      for(var i = 0; i < PlayerData.length; i++) {
+        html += '<li>' + PlayerData[i] + '</li>'
+      }
+      console.log(html)
+      $('.info').innerHTML = html
+    }
+  </script>
+</body>
+</html>
